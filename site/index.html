@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>パスワードが必要です</title>
+<style>
+  :root { --bg:#faf8f2; --fg:#1d2124; --muted:#6b7073; --line:#e2ded4; --accent:#1E50A2; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#141414; --fg:#eee; --muted:#9a9a9a; --line:#333; --accent:#7fa6e8; } }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--bg); color:var(--fg);
+         font:16px/1.6 system-ui,-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif; padding:16px; box-sizing:border-box; }
+  form { width:100%; max-width:340px; display:flex; flex-direction:column; gap:12px; }
+  h1 { font-size:1.2rem; margin:0; }
+  input { font:inherit; font-size:16px; padding:12px 14px; border:1px solid var(--line); border-radius:12px; background:transparent; color:inherit; }
+  button { font:inherit; font-weight:700; padding:12px; border:0; border-radius:12px; background:var(--accent); color:#fff; }
+  .err { color:#d64532; font-size:.9rem; min-height:1.4em; margin:0; }
+  .muted { color:var(--muted); font-size:.85rem; margin:0; }
+</style></head>
+<body>
+<form id="f" autocomplete="on">
+  <h1>🔒 パスワードを入力</h1>
+  <p class="muted">このページは鍵がかかっています。</p>
+  <input id="p" type="password" autocomplete="current-password" placeholder="パスワード" required autofocus>
+  <button id="b">開く</button>
+  <p class="err" id="e"></p>
+</form>
+<script>
+(function () {
+  var P = {"iv":"hlYjHt4YcbC8hHUz","ct":"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"}, SALT = "VOKTxcpIdfRRrGDNYCHLDA==", ITER = 600000, K = 'pubsite-key';
+  var b64 = function (s) { return Uint8Array.from(atob(s), function (c) { return c.charCodeAt(0); }); };
+  function open(key) {
+    return crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(P.iv) }, key, b64(P.ct)).then(function (buf) {
+      var html = new TextDecoder().decode(buf);
+      document.open(); document.write(html); document.close();
+    });
+  }
+  function importRaw(raw) { return crypto.subtle.importKey('raw', raw, 'AES-GCM', true, ['decrypt']); }
+  // 同じタブで一度開けていれば、保存した鍵で自動的に開く
+  try {
+    var saved = sessionStorage.getItem(K);
+    if (saved) { var s = JSON.parse(saved); if (s.salt === SALT) importRaw(b64(s.key)).then(open).catch(function () { sessionStorage.removeItem(K); }); }
+  } catch (e) {}
+  document.getElementById('f').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var btn = document.getElementById('b'), err = document.getElementById('e');
+    btn.disabled = true; btn.textContent = '確認中…'; err.textContent = '';
+    var pw = new TextEncoder().encode(document.getElementById('p').value);
+    crypto.subtle.importKey('raw', pw, 'PBKDF2', false, ['deriveKey']).then(function (base) {
+      return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: b64(SALT), iterations: ITER, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, true, ['decrypt']);
+    }).then(function (key) {
+      return crypto.subtle.exportKey('raw', key).then(function (raw) {
+        return open(key).then(function () {
+          try { sessionStorage.setItem(K, JSON.stringify({ salt: SALT, key: btoa(String.fromCharCode.apply(null, new Uint8Array(raw))) })); } catch (e) {}
+        });
+      });
+    }).catch(function () {
+      btn.disabled = false; btn.textContent = '開く'; err.textContent = 'パスワードが違います';
+    });
+  });
+})();
+</script>
+</body></html>
